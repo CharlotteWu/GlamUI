@@ -18,5 +18,8 @@ module.exports = {
         loaders: {
             js: 'babel'
         }
-    }
+    },
+    plugins:[
+
+    ]
 }

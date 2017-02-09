@@ -1,24 +1,31 @@
 <template>
-     <glamRow></glamRow>
+     <div class="column">
+         {{content}}
+     </div>
 </template>
 
 <script>
-    import glamRow  from './glamRow.vue';
 
     export default{
         props:{
             row:{
                 type:'Number',
                 default:''
+            },
+            content:{
+                type:'String',
+                default:''
             }
 
         },
-        components:{
-            glamRow
-        }
+
     }
 </script>
 
 <style>
+
+.column{
+    display: flex;
+}
 
 </style>
