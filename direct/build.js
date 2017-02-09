@@ -9022,12 +9022,12 @@
 	    value: true
 	});
 	// <template>
-	//      <transition v-if="close" name="fade" >
+	//      <transition v-if="show" name="fade" >
 	//          <div :class="alertStyle" class="alert">
 	//             <slot>
 	//                 <p class="description">
 	//                     {{description}}
-	//                     <span class="alert-close" @click="close = {{closable}}">{{closable_description}}</span>
+	//                     <span class="alert-close" @click="show = false">{{closable_description}}</span>
 	//                 </p>
 	//             </slot>
 	//          </div>
@@ -9046,10 +9046,6 @@
 	            type: String,
 	            default: 'default content'
 	        },
-	        closable: {
-	            type: String,
-	            default: true
-	        },
 	        closable_description: {
 	            type: String,
 	            default: 'X'
@@ -9067,7 +9063,7 @@
 	    },
 	    data: function data() {
 	        return {
-	            close: ''
+	            'show': true
 	        };
 	    }
 
@@ -9123,7 +9119,7 @@
 /* 8 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n     <transition v-if=\"close\" name=\"fade\" >\r\n         <div :class=\"alertStyle\" class=\"alert\">\r\n            <slot>\r\n                <p class=\"description\">\r\n                    {{description}}\r\n                    <span class=\"alert-close\" @click=\"close = {{closable}}\">{{closable_description}}</span>\r\n                </p>\r\n            </slot>\r\n         </div>\r\n     </transition>\r\n";
+	module.exports = "\r\n     <transition v-if=\"show\" name=\"fade\" >\r\n         <div :class=\"alertStyle\" class=\"alert\">\r\n            <slot>\r\n                <p class=\"description\">\r\n                    {{description}}\r\n                    <span class=\"alert-close\" @click=\"show = false\">{{closable_description}}</span>\r\n                </p>\r\n            </slot>\r\n         </div>\r\n     </transition>\r\n";
 
 /***/ }
 /******/ ]);

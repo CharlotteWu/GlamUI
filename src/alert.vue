@@ -4,7 +4,7 @@
             <slot>
                 <p class="description">
                     {{description}}
-                    <span class="alert-close" @click="close = {{closable}}">{{closable_description}}</span>
+                    <span class="alert-close" @click="close = false">{{closable_description}}</span>
                 </p>
             </slot>
          </div>
@@ -23,10 +23,6 @@
                 type:String,
                 default:'default content'
             },
-            closable:{
-                type:String,
-                default:true
-            },
             closable_description:{
                 type:String,
                 default:'X'
@@ -44,7 +40,7 @@
         },
         data:function(){
             return{
-                close:''
+                'close':true
             }
         }
 
@@ -85,6 +81,7 @@
         position: absolute;
         right: 10px;
         display: inline-block;
+        cursor: pointer;
     }
 
 
