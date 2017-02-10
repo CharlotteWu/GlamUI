@@ -1,24 +1,28 @@
 <template>
      <div class="column">
-         {{content}}
+         <!--<span class="row" v-for="col in {{colNums}}"></span>-->
+         <span v-for="c in cnums" :class="row" >{{c}}</span>
      </div>
 </template>
 
 <script>
-
     export default{
         props:{
-            row:{
-                type:'Number',
-                default:''
+            cnums:{
+                type:Number,
+                default:'0'
             },
-            content:{
-                type:'String',
-                default:''
+            spacing:{
+                type:Number,
+                default:'0'
             }
-
         },
 
+        computed:{
+            row:function () {
+                //console.log(cnums);
+            }
+        }
     }
 </script>
 
@@ -26,6 +30,20 @@
 
 .column{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 20px;
 }
+.column span{
+    display: inline-block;
+
+}
+/*.row1{*/
+    /*background: #aaaaaa;*/
+/*}*/
+/*.row2{*/
+    /*background: #546331;*/
+/*}*/
+
 
 </style>

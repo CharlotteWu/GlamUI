@@ -54,17 +54,21 @@
 
 	var _alert2 = _interopRequireDefault(_alert);
 
+	var _column = __webpack_require__(9);
+
+	var _column2 = _interopRequireDefault(_column);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	/**
-	 * Created by charlotte on 17/2/2.
-	 */
 	new _vue2.default({
 	    el: '#app',
 	    components: {
-	        alert: _alert2.default
+	        alert: _alert2.default,
+	        column: _column2.default
 	    }
-	});
+	}); /**
+	     * Created by charlotte on 17/2/2.
+	     */
 
 /***/ },
 /* 1 */
@@ -8699,7 +8703,7 @@
 
 
 	// module
-	exports.push([module.id, "\r\n    .alert{\r\n        height: 40px;\r\n        width: calc(100% - 20px);\r\n        border-radius: 5px;\r\n        color: #ffffff;\r\n        position: relative;\r\n        background: #aaaaaa;\r\n        margin: 10px;\r\n    }\r\n\r\n    .description{\r\n        line-height: 40px;\r\n        text-align: left;\r\n        margin-left: 10px;\r\n    }\r\n\r\n    .alert-success{\r\n        background: #2172D6;\r\n    }\r\n\r\n    .alert-warning{\r\n        background: #D60006;\r\n    }\r\n\r\n    .alert-normal{\r\n        background: #78D68C;\r\n    }\r\n\r\n    .alert-close{\r\n        position: absolute;\r\n        right: 10px;\r\n        display: inline-block;\r\n    }\r\n\r\n\r\n    .fade-enter-active, .fade-leave-active {\r\n        -webkit-transition: opacity .5s;\r\n        transition: opacity .5s\r\n    }\r\n    .fade-enter, .fade-leave-active {\r\n        opacity: 0\r\n    }\r\n\r\n", ""]);
+	exports.push([module.id, "\r\n    .alert{\r\n        height: 40px;\r\n        width: calc(100% - 20px);\r\n        border-radius: 5px;\r\n        color: #ffffff;\r\n        position: relative;\r\n        background: #aaaaaa;\r\n        margin: 10px;\r\n    }\r\n\r\n    .description{\r\n        line-height: 40px;\r\n        text-align: left;\r\n        margin-left: 10px;\r\n    }\r\n\r\n    .alert-success{\r\n        background: #2172D6;\r\n    }\r\n\r\n    .alert-warning{\r\n        background: #D60006;\r\n    }\r\n\r\n    .alert-normal{\r\n        background: #78D68C;\r\n    }\r\n\r\n    .alert-close{\r\n        position: absolute;\r\n        right: 10px;\r\n        display: inline-block;\r\n        cursor: pointer;\r\n    }\r\n\r\n\r\n    .fade-enter-active, .fade-leave-active {\r\n        -webkit-transition: opacity .5s;\r\n        transition: opacity .5s\r\n    }\r\n    .fade-enter, .fade-leave-active {\r\n        opacity: 0\r\n    }\r\n\r\n", ""]);
 
 	// exports
 
@@ -9022,12 +9026,12 @@
 	    value: true
 	});
 	// <template>
-	//      <transition v-if="show" name="fade" >
+	//      <transition v-if="close" name="fade" >
 	//          <div :class="alertStyle" class="alert">
 	//             <slot>
 	//                 <p class="description">
 	//                     {{description}}
-	//                     <span class="alert-close" @click="show = false">{{closable_description}}</span>
+	//                     <span class="alert-close" @click="close = false">{{closable_description}}</span>
 	//                 </p>
 	//             </slot>
 	//          </div>
@@ -9050,7 +9054,6 @@
 	            type: String,
 	            default: 'X'
 	        }
-
 	    },
 	    computed: {
 	        alertStyle: function alertStyle() {
@@ -9063,7 +9066,7 @@
 	    },
 	    data: function data() {
 	        return {
-	            'show': true
+	            'close': true
 	        };
 	    }
 
@@ -9103,6 +9106,7 @@
 	//         position: absolute;
 	//         right: 10px;
 	//         display: inline-block;
+	//         cursor: pointer;
 	//     }
 	//
 	//
@@ -9119,7 +9123,131 @@
 /* 8 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n     <transition v-if=\"show\" name=\"fade\" >\r\n         <div :class=\"alertStyle\" class=\"alert\">\r\n            <slot>\r\n                <p class=\"description\">\r\n                    {{description}}\r\n                    <span class=\"alert-close\" @click=\"show = false\">{{closable_description}}</span>\r\n                </p>\r\n            </slot>\r\n         </div>\r\n     </transition>\r\n";
+	module.exports = "\r\n     <transition v-if=\"close\" name=\"fade\" >\r\n         <div :class=\"alertStyle\" class=\"alert\">\r\n            <slot>\r\n                <p class=\"description\">\r\n                    {{description}}\r\n                    <span class=\"alert-close\" @click=\"close = false\">{{closable_description}}</span>\r\n                </p>\r\n            </slot>\r\n         </div>\r\n     </transition>\r\n";
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(10)
+	__vue_script__ = __webpack_require__(12)
+	__vue_template__ = __webpack_require__(13)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "E:\\GlamUI\\src\\column.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(11);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(6)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-35c72768&file=column.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./column.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-35c72768&file=column.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./column.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(5)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\r\n\r\n.column{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-pack: center;\r\n        -ms-flex-pack: center;\r\n            justify-content: center;\r\n    -webkit-box-align: center;\r\n        -ms-flex-align: center;\r\n            align-items: center;\r\n    min-height: 20px;\r\n}\r\n.column span{\r\n    display: inline-block;\r\n\r\n}\r\n/*.row1{*/\r\n    /*background: #aaaaaa;*/\r\n/*}*/\r\n/*.row2{*/\r\n    /*background: #546331;*/\r\n/*}*/\r\n\r\n\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//      <div class="column">
+	//          <!--<span class="row" v-for="col in {{colNums}}"></span>-->
+	//          <span v-for="c in cnums" :class="row">{{c}}</span>
+	//      </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	    props: {
+	        cnums: {
+	            type: Number,
+	            default: '0'
+	        }
+	    },
+
+	    computed: {
+	        row: function row() {
+	            //console.log(cnums);
+	        }
+	    }
+	};
+	// </script>
+	//
+	// <style>
+	//
+	// .column{
+	//     display: flex;
+	//     justify-content: center;
+	//     align-items: center;
+	//     min-height: 20px;
+	// }
+	// .column span{
+	//     display: inline-block;
+	//
+	// }
+	// /*.row1{*/
+	//     /*background: #aaaaaa;*/
+	// /*}*/
+	// /*.row2{*/
+	//     /*background: #546331;*/
+	// /*}*/
+	//
+	//
+	// </style>
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n     <div class=\"column\">\r\n         <!--<span class=\"row\" v-for=\"col in {{colNums}}\"></span>-->\r\n         <span v-for=\"c in cnums\" :class=\"row\">{{c}}</span>\r\n     </div>\r\n";
 
 /***/ }
 /******/ ]);

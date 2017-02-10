@@ -27,7 +27,6 @@
                 type:String,
                 default:'X'
             }
-
         },
         computed:{
             alertStyle:function(){

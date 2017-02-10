@@ -3,10 +3,12 @@
  */
 import Vue from 'vue/dist/vue'
 import alert from './alert.vue'
+import column from './column.vue'
 
 new Vue({
     el: '#app',
     components:{
-        alert
+        alert,
+        column
     }
 })
