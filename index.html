@@ -7,11 +7,13 @@
 </head>
 <body>
 <div id="app">
-    <!--<alert type="success" description="this is a successful content"></alert>-->
-    <!--<alert type="warning" description="this is a warning content"></alert>-->
-    <!--<alert type="normal" closable="false" closable_description="I Know"></alert>-->
+    <alert type="success" description="this is a successful content"></alert>
+    <alert type="warning" description="this is a warning content"></alert>
+    <alert type="normal" :closable="false" closable_description="I Know"></alert>
     <!--cnums:个数 spacing:间距 -->
-    <column :cnums="4" :spacing="2"></column>
+    <!--<column :cnums="4" :spacing="2" align="center"></column>-->
+
+
 </div>
 
 <script src="direct/build.js"></script>

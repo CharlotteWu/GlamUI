@@ -21,6 +21,7 @@
         computed:{
             row:function () {
                 //console.log(cnums);
+
             }
         }
     }
@@ -36,14 +37,10 @@
 }
 .column span{
     display: inline-block;
-
+    width: 25%;
+    text-align: center;
 }
-/*.row1{*/
-    /*background: #aaaaaa;*/
-/*}*/
-/*.row2{*/
-    /*background: #546331;*/
-/*}*/
+
 
 
 </style>

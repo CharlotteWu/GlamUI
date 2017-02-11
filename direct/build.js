@@ -58,13 +58,23 @@
 
 	var _column2 = _interopRequireDefault(_column);
 
+	var _parent = __webpack_require__(14);
+
+	var _parent2 = _interopRequireDefault(_parent);
+
+	var _child = __webpack_require__(18);
+
+	var _child2 = _interopRequireDefault(_child);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	new _vue2.default({
 	    el: '#app',
 	    components: {
 	        alert: _alert2.default,
-	        column: _column2.default
+	        column: _column2.default,
+	        parent: _parent2.default,
+	        child: _child2.default
 	    }
 	}); /**
 	     * Created by charlotte on 17/2/2.
@@ -8703,7 +8713,7 @@
 
 
 	// module
-	exports.push([module.id, "\r\n    .alert{\r\n        height: 40px;\r\n        width: calc(100% - 20px);\r\n        border-radius: 5px;\r\n        color: #ffffff;\r\n        position: relative;\r\n        background: #aaaaaa;\r\n        margin: 10px;\r\n    }\r\n\r\n    .description{\r\n        line-height: 40px;\r\n        text-align: left;\r\n        margin-left: 10px;\r\n    }\r\n\r\n    .alert-success{\r\n        background: #2172D6;\r\n    }\r\n\r\n    .alert-warning{\r\n        background: #D60006;\r\n    }\r\n\r\n    .alert-normal{\r\n        background: #78D68C;\r\n    }\r\n\r\n    .alert-close{\r\n        position: absolute;\r\n        right: 10px;\r\n        display: inline-block;\r\n        cursor: pointer;\r\n    }\r\n\r\n\r\n    .fade-enter-active, .fade-leave-active {\r\n        -webkit-transition: opacity .5s;\r\n        transition: opacity .5s\r\n    }\r\n    .fade-enter, .fade-leave-active {\r\n        opacity: 0\r\n    }\r\n\r\n", ""]);
+	exports.push([module.id, "\r\n    .alert{\r\n        height: 40px;\r\n        width: calc(100% - 20px);\r\n        border-radius: 5px;\r\n        color: #ffffff;\r\n        position: relative;\r\n        background: #aaaaaa;\r\n        margin: 10px;\r\n    }\r\n\r\n    .description{\r\n        line-height: 40px;\r\n        text-align: left;\r\n        margin-left: 10px;\r\n    }\r\n\r\n    .alert-normal{\r\n        background: #0389D6;\r\n    }\r\n\r\n    .alert-warning{\r\n        background: #D60006;\r\n    }\r\n\r\n    .alert-success{\r\n        background: #78D68C;\r\n    }\r\n\r\n    .alert-close{\r\n        position: absolute;\r\n        right: 10px;\r\n        display: inline-block;\r\n        cursor: pointer;\r\n    }\r\n\r\n\r\n    .fade-enter-active, .fade-leave-active {\r\n        -webkit-transition: opacity .5s;\r\n        transition: opacity .5s\r\n    }\r\n    .fade-enter, .fade-leave-active {\r\n        opacity: 0\r\n    }\r\n\r\n", ""]);
 
 	// exports
 
@@ -9031,7 +9041,7 @@
 	//             <slot>
 	//                 <p class="description">
 	//                     {{description}}
-	//                     <span class="alert-close" @click="close = false">{{closable_description}}</span>
+	//                     <span class="alert-close" @click="shouldClose">{{ closable_description}}</span>
 	//                 </p>
 	//             </slot>
 	//          </div>
@@ -9050,6 +9060,10 @@
 	            type: String,
 	            default: 'default content'
 	        },
+	        closable: {
+	            type: Boolean,
+	            default: true
+	        },
 	        closable_description: {
 	            type: String,
 	            default: 'X'
@@ -9062,6 +9076,15 @@
 	                'alert-warning': this.type == 'warning',
 	                'alert-normal': this.type == 'normal'
 	            };
+	        }
+	    },
+	    methods: {
+	        shouldClose: function shouldClose() {
+	            if (this.closable == true) {
+	                this.close = false;
+	            } else if (this.closable == false) {
+	                this.close = true;
+	            }
 	        }
 	    },
 	    data: function data() {
@@ -9090,15 +9113,15 @@
 	//         margin-left: 10px;
 	//     }
 	//
-	//     .alert-success{
-	//         background: #2172D6;
+	//     .alert-normal{
+	//         background: #0389D6;
 	//     }
 	//
 	//     .alert-warning{
 	//         background: #D60006;
 	//     }
 	//
-	//     .alert-normal{
+	//     .alert-success{
 	//         background: #78D68C;
 	//     }
 	//
@@ -9123,7 +9146,7 @@
 /* 8 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n     <transition v-if=\"close\" name=\"fade\" >\r\n         <div :class=\"alertStyle\" class=\"alert\">\r\n            <slot>\r\n                <p class=\"description\">\r\n                    {{description}}\r\n                    <span class=\"alert-close\" @click=\"close = false\">{{closable_description}}</span>\r\n                </p>\r\n            </slot>\r\n         </div>\r\n     </transition>\r\n";
+	module.exports = "\r\n     <transition v-if=\"close\" name=\"fade\" >\r\n         <div :class=\"alertStyle\" class=\"alert\">\r\n            <slot>\r\n                <p class=\"description\">\r\n                    {{description}}\r\n                    <span class=\"alert-close\" @click=\"shouldClose\">{{ closable_description}}</span>\r\n                </p>\r\n            </slot>\r\n         </div>\r\n     </transition>\r\n";
 
 /***/ },
 /* 9 */
@@ -9183,7 +9206,7 @@
 
 
 	// module
-	exports.push([module.id, "\r\n\r\n.column{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-pack: center;\r\n        -ms-flex-pack: center;\r\n            justify-content: center;\r\n    -webkit-box-align: center;\r\n        -ms-flex-align: center;\r\n            align-items: center;\r\n    min-height: 20px;\r\n}\r\n.column span{\r\n    display: inline-block;\r\n\r\n}\r\n/*.row1{*/\r\n    /*background: #aaaaaa;*/\r\n/*}*/\r\n/*.row2{*/\r\n    /*background: #546331;*/\r\n/*}*/\r\n\r\n\r\n", ""]);
+	exports.push([module.id, "\r\n\r\n.column{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-pack: center;\r\n        -ms-flex-pack: center;\r\n            justify-content: center;\r\n    -webkit-box-align: center;\r\n        -ms-flex-align: center;\r\n            align-items: center;\r\n    min-height: 20px;\r\n}\r\n.column span{\r\n    display: inline-block;\r\n    width: 25%;\r\n    text-align: center;\r\n}\r\n\r\n\r\n\r\n", ""]);
 
 	// exports
 
@@ -9200,7 +9223,7 @@
 	// <template>
 	//      <div class="column">
 	//          <!--<span class="row" v-for="col in {{colNums}}"></span>-->
-	//          <span v-for="c in cnums" :class="row">{{c}}</span>
+	//          <span v-for="c in cnums" :class="row" >{{c}}</span>
 	//      </div>
 	// </template>
 	//
@@ -9210,12 +9233,17 @@
 	        cnums: {
 	            type: Number,
 	            default: '0'
+	        },
+	        spacing: {
+	            type: Number,
+	            default: '0'
 	        }
 	    },
 
 	    computed: {
 	        row: function row() {
 	            //console.log(cnums);
+
 	        }
 	    }
 	};
@@ -9231,14 +9259,10 @@
 	// }
 	// .column span{
 	//     display: inline-block;
-	//
+	//     width: 25%;
+	//     text-align: center;
 	// }
-	// /*.row1{*/
-	//     /*background: #aaaaaa;*/
-	// /*}*/
-	// /*.row2{*/
-	//     /*background: #546331;*/
-	// /*}*/
+	//
 	//
 	//
 	// </style>
@@ -9247,7 +9271,202 @@
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n     <div class=\"column\">\r\n         <!--<span class=\"row\" v-for=\"col in {{colNums}}\"></span>-->\r\n         <span v-for=\"c in cnums\" :class=\"row\">{{c}}</span>\r\n     </div>\r\n";
+	module.exports = "\r\n     <div class=\"column\">\r\n         <!--<span class=\"row\" v-for=\"col in {{colNums}}\"></span>-->\r\n         <span v-for=\"c in cnums\" :class=\"row\" >{{c}}</span>\r\n     </div>\r\n";
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(15)
+	__vue_script__ = __webpack_require__(17)
+	__vue_template__ = __webpack_require__(23)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "E:\\GlamUI\\src\\parent.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(16);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(6)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5405d7a0&file=parent.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./parent.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5405d7a0&file=parent.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./parent.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(5)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\r\n\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _child = __webpack_require__(18);
+
+	var _child2 = _interopRequireDefault(_child);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = {
+	    components: {
+	        child: _child2.default
+	    }
+	};
+	// </script>
+	//
+	// <style>
+	//
+	// </style>
+	// <template>
+	//    <div>
+	//        I am parent
+	//    </div>
+	// </template>
+	//
+	// <script>
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(19)
+	__vue_script__ = __webpack_require__(21)
+	__vue_template__ = __webpack_require__(22)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "E:\\GlamUI\\src\\child.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(20);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(6)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-051cd6d4&file=child.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./child.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-051cd6d4&file=child.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./child.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(5)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\r\n\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//     <div>
+	//         i am child
+	//     </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {};
+	// </script>
+	//
+	// <style>
+	//
+	// </style>
+
+/***/ },
+/* 22 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n    <div>\r\n        i am child\r\n    </div>\r\n";
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n   <div>\r\n       I am parent\r\n   </div>\r\n";
 
 /***/ }
 /******/ ]);

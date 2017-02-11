@@ -4,7 +4,7 @@
             <slot>
                 <p class="description">
                     {{description}}
-                    <span class="alert-close" @click="close = false">{{closable_description}}</span>
+                    <span class="alert-close" @click="shouldClose">{{ closable_description}}</span>
                 </p>
             </slot>
          </div>
@@ -23,6 +23,10 @@
                 type:String,
                 default:'default content'
             },
+            closable:{
+                type:Boolean,
+                default:true
+            },
             closable_description:{
                 type:String,
                 default:'X'
@@ -35,6 +39,15 @@
                     'alert-warning': this.type == 'warning',
                     'alert-normal': this.type == 'normal'
                 }
+            }
+        },
+        methods:{
+            shouldClose:function() {
+                 if(this.closable == true){
+                     this.close = false;
+                 }else if(this.closable == false){
+                     this.close = true;
+                 }
             }
         },
         data:function(){
@@ -64,15 +77,15 @@
         margin-left: 10px;
     }
 
-    .alert-success{
-        background: #2172D6;
+    .alert-normal{
+        background: #0389D6;
     }
 
     .alert-warning{
         background: #D60006;
     }
 
-    .alert-normal{
+    .alert-success{
         background: #78D68C;
     }
 
@@ -82,7 +95,6 @@
         display: inline-block;
         cursor: pointer;
     }
-
 
     .fade-enter-active, .fade-leave-active {
         transition: opacity .5s
