@@ -1,14 +1,14 @@
 <template>
    <div>
        I am parent
+       <slot></slot>
    </div>
 </template>
 
 <script>
-import child from './child.vue'
-    export  default{
-        components:{
-            child
+    export default{
+        mounted(){
+            this.$forceUpdate();
         }
     }
 </script>

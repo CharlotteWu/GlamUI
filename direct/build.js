@@ -62,7 +62,7 @@
 
 	var _parent2 = _interopRequireDefault(_parent);
 
-	var _child = __webpack_require__(18);
+	var _child = __webpack_require__(19);
 
 	var _child2 = _interopRequireDefault(_child);
 
@@ -8713,7 +8713,7 @@
 
 
 	// module
-	exports.push([module.id, "\r\n    .alert{\r\n        height: 40px;\r\n        width: calc(100% - 20px);\r\n        border-radius: 5px;\r\n        color: #ffffff;\r\n        position: relative;\r\n        background: #aaaaaa;\r\n        margin: 10px;\r\n    }\r\n\r\n    .description{\r\n        line-height: 40px;\r\n        text-align: left;\r\n        margin-left: 10px;\r\n    }\r\n\r\n    .alert-normal{\r\n        background: #0389D6;\r\n    }\r\n\r\n    .alert-warning{\r\n        background: #D60006;\r\n    }\r\n\r\n    .alert-success{\r\n        background: #78D68C;\r\n    }\r\n\r\n    .alert-close{\r\n        position: absolute;\r\n        right: 10px;\r\n        display: inline-block;\r\n        cursor: pointer;\r\n    }\r\n\r\n\r\n    .fade-enter-active, .fade-leave-active {\r\n        -webkit-transition: opacity .5s;\r\n        transition: opacity .5s\r\n    }\r\n    .fade-enter, .fade-leave-active {\r\n        opacity: 0\r\n    }\r\n\r\n", ""]);
+	exports.push([module.id, "\r\n    .alert{\r\n        height: 40px;\r\n        width: calc(100% - 20px);\r\n        border-radius: 5px;\r\n        color: #ffffff;\r\n        position: relative;\r\n        background: #aaaaaa;\r\n        margin: 10px;\r\n    }\r\n\r\n    .description{\r\n        line-height: 40px;\r\n        text-align: left;\r\n        margin-left: 10px;\r\n    }\r\n\r\n    .alert-normal{\r\n        background: #0389D6;\r\n    }\r\n\r\n    .alert-warning{\r\n        background: #D60006;\r\n    }\r\n\r\n    .alert-success{\r\n        background: #78D68C;\r\n    }\r\n\r\n    .alert-close{\r\n        position: absolute;\r\n        right: 10px;\r\n        display: inline-block;\r\n        cursor: pointer;\r\n    }\r\n\r\n    .fade-enter-active, .fade-leave-active {\r\n        -webkit-transition: opacity .5s;\r\n        transition: opacity .5s\r\n    }\r\n    .fade-enter, .fade-leave-active {\r\n        opacity: 0\r\n    }\r\n\r\n", ""]);
 
 	// exports
 
@@ -9132,7 +9132,6 @@
 	//         cursor: pointer;
 	//     }
 	//
-	//
 	//     .fade-enter-active, .fade-leave-active {
 	//         transition: opacity .5s
 	//     }
@@ -9280,7 +9279,7 @@
 	var __vue_script__, __vue_template__
 	__webpack_require__(15)
 	__vue_script__ = __webpack_require__(17)
-	__vue_template__ = __webpack_require__(23)
+	__vue_template__ = __webpack_require__(18)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -9338,23 +9337,24 @@
 
 /***/ },
 /* 17 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
-	var _child = __webpack_require__(18);
-
-	var _child2 = _interopRequireDefault(_child);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	// <template>
+	//    <div>
+	//        I am parent
+	//        <slot></slot>
+	//    </div>
+	// </template>
+	//
+	// <script>
 	exports.default = {
-	    components: {
-	        child: _child2.default
+	    mounted: function mounted() {
+	        this.$forceUpdate();
 	    }
 	};
 	// </script>
@@ -9362,22 +9362,21 @@
 	// <style>
 	//
 	// </style>
-	// <template>
-	//    <div>
-	//        I am parent
-	//    </div>
-	// </template>
-	//
-	// <script>
 
 /***/ },
 /* 18 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n   <div>\r\n       I am parent\r\n       <slot></slot>\r\n   </div>\r\n";
+
+/***/ },
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(19)
-	__vue_script__ = __webpack_require__(21)
-	__vue_template__ = __webpack_require__(22)
+	__webpack_require__(20)
+	__vue_script__ = __webpack_require__(22)
+	__vue_template__ = __webpack_require__(23)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -9394,13 +9393,13 @@
 	})()}
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(20);
+	var content = __webpack_require__(21);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(6)(content, {});
@@ -9420,7 +9419,7 @@
 	}
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(5)();
@@ -9434,7 +9433,7 @@
 
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -9443,9 +9442,7 @@
 	  value: true
 	});
 	// <template>
-	//     <div>
-	//         i am child
-	//     </div>
+	//
 	// </template>
 	//
 	// <script>
@@ -9457,16 +9454,10 @@
 	// </style>
 
 /***/ },
-/* 22 */
-/***/ function(module, exports) {
-
-	module.exports = "\r\n    <div>\r\n        i am child\r\n    </div>\r\n";
-
-/***/ },
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n   <div>\r\n       I am parent\r\n   </div>\r\n";
+	module.exports = "\r\n\r\n";
 
 /***/ }
 /******/ ]);
