@@ -66,19 +66,25 @@
 
 	var _child2 = _interopRequireDefault(_child);
 
+	var _mention = __webpack_require__(24);
+
+	var _mention2 = _interopRequireDefault(_mention);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * Created by charlotte on 17/2/2.
+	 */
 	new _vue2.default({
 	    el: '#app',
 	    components: {
 	        alert: _alert2.default,
 	        column: _column2.default,
 	        parent: _parent2.default,
-	        child: _child2.default
+	        child: _child2.default,
+	        mention: _mention2.default
 	    }
-	}); /**
-	     * Created by charlotte on 17/2/2.
-	     */
+	});
 
 /***/ },
 /* 1 */
@@ -9427,7 +9433,7 @@
 
 
 	// module
-	exports.push([module.id, "\r\n\r\n", ""]);
+	exports.push([module.id, "\r\n.comment{\r\n    color: #ffffff;\r\n    border-radius: 5px;\r\n    background: #cccccc;\r\n    padding: 2px 4px 2px 4px;\r\n    position: relative;\r\n}\r\n\r\n.commentNum{\r\n    display: inline-block;\r\n    position: absolute;\r\n    background: red;\r\n    border-radius: 5px;\r\n    top: -2px;\r\n    right: -2px;\r\n    font-size: 10px;\r\n}\r\n\r\n", ""]);
 
 	// exports
 
@@ -9436,20 +9442,49 @@
 /* 22 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 	// <template>
-	//
+	//          <span class="comment">
+	//              <slot></slot>
+	//              <!--通过分发内容直接在html编写-->
+	//              <span :class="commentNum">+23</span>
+	//          </span>
 	// </template>
 	//
 	// <script>
-	exports.default = {};
+	exports.default = {
+	    props: {
+	        commentNum: {
+	            type: String,
+	            default: ''
+	        }
+	    }
+
+	};
 	// </script>
 	//
 	// <style>
+	// .comment{
+	//     color: #ffffff;
+	//     border-radius: 5px;
+	//     background: #cccccc;
+	//     padding: 2px 4px 2px 4px;
+	//     position: relative;
+	// }
+	//
+	// .commentNum{
+	//     display: inline-block;
+	//     position: absolute;
+	//     background: red;
+	//     border-radius: 5px;
+	//     top: -2px;
+	//     right: -2px;
+	//     font-size: 10px;
+	// }
 	//
 	// </style>
 
@@ -9457,7 +9492,156 @@
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n\r\n";
+	module.exports = "\r\n         <span class=\"comment\">\r\n             <slot></slot>\r\n             <!--通过分发内容直接在html编写-->\r\n             <span :class=\"commentNum\">+23</span>\r\n         </span>\r\n";
+
+/***/ },
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(25)
+	__vue_script__ = __webpack_require__(27)
+	__vue_template__ = __webpack_require__(28)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "E:\\GlamUI\\src\\mention.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(26);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(6)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-12ab1438&file=mention.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./mention.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-12ab1438&file=mention.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./mention.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(5)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\r\n    .mention{\r\n        color: #ffffff;\r\n        border-radius: 5px;\r\n        background: #cccccc;\r\n        padding: 2px 10px 2px 10px;\r\n        position: relative;\r\n    }\r\n\r\n    .mentionNumber{\r\n        display: inline-block;\r\n        position: absolute;\r\n        background: red;\r\n        border-radius: 5px;\r\n        top: -10px;\r\n        right: -14px;\r\n        font-size: 10px;\r\n        padding: 0 4px 0 4px;\r\n    }\r\n\r\n    .mentionAlert{\r\n        display: inline-block;\r\n        position: absolute;\r\n        background: red;\r\n        border-radius: 50%;\r\n        width: 8px;\r\n        height: 8px;\r\n        top: -4px;\r\n        right: -4px;\r\n    }\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 27 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//          <span class="mention">
+	//              <slot></slot>
+	//              <!--通过分发内容直接在html编写-->
+	//              <span :class="mentionOpen" >{{mentionNum}}</span>
+	//          </span>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	    props: {
+	        mention_status: {
+	            type: String,
+	            default: ''
+	        },
+	        mention_num: {
+	            type: String,
+	            default: ''
+	        }
+	    },
+	    computed: {
+	        mentionOpen: function mentionOpen() {
+	            return {
+	                'mentionNumber': this.mention_status == 'on',
+	                'mentionAlert': this.mention_status == 'off'
+	            };
+	        },
+	        mentionNum: function mentionNum() {
+	            if (parseInt(this['mention_num']) <= 99) {
+	                return this['mention_num'];
+	            } else if (parseInt(this['mention_num']) > 99) {
+	                return this['mention_num'] = '+99';
+	            }
+	        }
+	    }
+
+	};
+	// </script>
+	//
+	// <style>
+	//     .mention{
+	//         color: #ffffff;
+	//         border-radius: 5px;
+	//         background: #cccccc;
+	//         padding: 2px 10px 2px 10px;
+	//         position: relative;
+	//     }
+	//
+	//     .mentionNumber{
+	//         display: inline-block;
+	//         position: absolute;
+	//         background: red;
+	//         border-radius: 5px;
+	//         top: -10px;
+	//         right: -14px;
+	//         font-size: 10px;
+	//         padding: 0 4px 0 4px;
+	//     }
+	//
+	//     .mentionAlert{
+	//         display: inline-block;
+	//         position: absolute;
+	//         background: red;
+	//         border-radius: 50%;
+	//         width: 8px;
+	//         height: 8px;
+	//         top: -4px;
+	//         right: -4px;
+	//     }
+	// </style>
+
+/***/ },
+/* 28 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n         <span class=\"mention\">\r\n             <slot></slot>\r\n             <!--通过分发内容直接在html编写-->\r\n             <span :class=\"mentionOpen\" >{{mentionNum}}</span>\r\n         </span>\r\n";
 
 /***/ }
 /******/ ]);

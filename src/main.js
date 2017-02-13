@@ -6,6 +6,7 @@ import alert from './alert.vue'
 import column from './column.vue'
 import parent from './parent.vue'
 import child from './child.vue'
+import mention from './mention.vue'
 
 
 new Vue({
@@ -14,6 +15,7 @@ new Vue({
         alert,
         column,
         parent,
-        child
+        child,
+        mention
     }
 })
