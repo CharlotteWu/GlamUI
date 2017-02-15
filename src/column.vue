@@ -1,7 +1,7 @@
 <template>
-     <div class="column">
-          <slot></slot>
-     </div>
+    <div class="column">
+        <slot></slot>
+    </div>
 </template>
 
 <script>
@@ -13,16 +13,18 @@
 </script>
 
 <style>
-
 .column{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 20px;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    min-height: 30px;
 }
-.column span{
-    display: inline-block;
-    width: 25%;
-    text-align: center;
+
+.column > div{
+    /*通过sass计算children.length的平均宽度?安装webpack2.0?hot-reloader?*/
+    width: 30%;
+
+    /*--------------------------------------------------------------*/
+    min-height: 30px;
 }
 </style>

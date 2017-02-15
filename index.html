@@ -5,27 +5,59 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="css-reset.css" />
     <style>
-
+        .m{
+            top: 20px;
+        }
     </style>
 </head>
 <body>
 <div id="app">
+
     <!--alert component-->
     <!--<alert type="success" description="this is a successful content"></alert>-->
     <!--<alert type="warning" description="this is a warning content"></alert>-->
     <!--<alert type="normal" :closable="false" closable_description="I Know"></alert>-->
-    <!--cnums:个数 spacing:间距 -->
-    <!--<column :cnums="4" :spacing="2" align="center"></column>-->
+
     <!--mention-status:显示数目或不显示 mention_num:显示数目-->
     <!--<mention mention_status="off" class="m">评论</mention>-->
     <!--<mention mention_status="on" mention_num="100" class="m">评论</mention>-->
+
     <!--columns="" rows=""-->
     <!--column:获取rows.length 计算宽度-->
-    <column>
-        <row></row>
-        <row></row>
-        <row></row>
-    </column>
+    <!--cloumn:flex布局 通过sass计算子组件的宽度？-->
+    <!--<column>-->
+        <!--<row>-->
+            <!--<div class="example">-->
+                <!--this is a fake content.this is a fake content.this is a fake content.this is a fake content.this is a fake content.-->
+            <!--</div>-->
+        <!--</row>-->
+        <!--<row>-->
+            <!--<div class="example2">-->
+                <!--this is a fake content.-->
+            <!--</div>-->
+        <!--</row>-->
+        <!--<row>-->
+            <!--<div class="example3">-->
+                <!--this is a fake content.this is a fake content.-->
+            <!--</div>-->
+        <!--</row>-->
+    <!--</column>-->
+
+    <!--carousel plugin-->
+    <!--<carousel direction="round" autoplay="auto">-->
+        <!--<img src="images/">-->
+        <!--<img src="images/">-->
+        <!--<img src="images/">-->
+    <!--</carousel>-->
+
+    <!--popUp-->
+    <!--<popup popup_content="can you see me can you see me">-->
+        <!--<button>click me!</button>-->
+    <!--</popup>-->
+
+    <!--loading-->
+    <loading :delay="3"></loading>
+
 </div>
 
 <script src="direct/build.js"></script>

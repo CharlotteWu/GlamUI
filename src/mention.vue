@@ -2,7 +2,7 @@
          <span class="mention">
              <slot></slot>
              <!--通过分发内容直接在html编写-->
-             <span :class="mentionOpen" >{{mentionNum}}</span>
+             <span :class="mentionOpen">{{mentionNum}}</span>
          </span>
 </template>
 

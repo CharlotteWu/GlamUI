@@ -58,33 +58,40 @@
 
 	var _column2 = _interopRequireDefault(_column);
 
-	var _parent = __webpack_require__(14);
+	var _row = __webpack_require__(14);
 
-	var _parent2 = _interopRequireDefault(_parent);
+	var _row2 = _interopRequireDefault(_row);
 
-	var _child = __webpack_require__(19);
-
-	var _child2 = _interopRequireDefault(_child);
-
-	var _mention = __webpack_require__(24);
+	var _mention = __webpack_require__(19);
 
 	var _mention2 = _interopRequireDefault(_mention);
 
+	var _carousel = __webpack_require__(24);
+
+	var _carousel2 = _interopRequireDefault(_carousel);
+
+	var _popup = __webpack_require__(29);
+
+	var _popup2 = _interopRequireDefault(_popup);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	/**
-	 * Created by charlotte on 17/2/2.
-	 */
 	new _vue2.default({
 	    el: '#app',
 	    components: {
 	        alert: _alert2.default,
 	        column: _column2.default,
-	        parent: _parent2.default,
-	        child: _child2.default,
-	        mention: _mention2.default
+	        row: _row2.default,
+	        mention: _mention2.default,
+	        carousel: _carousel2.default,
+	        popup: _popup2.default
 	    }
 	});
+	// import parent from './parent.vue'
+	// import child from './child.vue'
+	/**
+	 * Created by charlotte on 17/2/2.
+	 */
 
 /***/ },
 /* 1 */
@@ -9211,7 +9218,7 @@
 
 
 	// module
-	exports.push([module.id, "\r\n\r\n.column{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-pack: center;\r\n        -ms-flex-pack: center;\r\n            justify-content: center;\r\n    -webkit-box-align: center;\r\n        -ms-flex-align: center;\r\n            align-items: center;\r\n    min-height: 20px;\r\n}\r\n.column span{\r\n    display: inline-block;\r\n    width: 25%;\r\n    text-align: center;\r\n}\r\n\r\n\r\n\r\n", ""]);
+	exports.push([module.id, "\r\n.column{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    /*justify-content: center;*/\r\n    /*align-items: center;*/\r\n    min-height: 30px;\r\n}\r\n\r\n.column > div{\r\n    /*通过sass计算children.length的平均宽度?安装webpack2.0?hot-reloader?*/\r\n    width: 30%;\r\n\r\n    /*--------------------------------------------------------------*/\r\n    min-height: 30px;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -9220,63 +9227,47 @@
 /* 12 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	// <template>
-	//      <div class="column">
-	//          <!--<span class="row" v-for="col in {{colNums}}"></span>-->
-	//          <span v-for="c in cnums" :class="row" >{{c}}</span>
-	//      </div>
+	//     <div class="column">
+	//         <slot></slot>
+	//     </div>
 	// </template>
 	//
 	// <script>
 	exports.default = {
-	    props: {
-	        cnums: {
-	            type: Number,
-	            default: '0'
-	        },
-	        spacing: {
-	            type: Number,
-	            default: '0'
-	        }
-	    },
-
-	    computed: {
-	        row: function row() {
-	            //console.log(cnums);
-
-	        }
+	    mounted: function mounted() {
+	        this.$forceUpdate();
 	    }
 	};
 	// </script>
 	//
 	// <style>
-	//
 	// .column{
 	//     display: flex;
-	//     justify-content: center;
-	//     align-items: center;
-	//     min-height: 20px;
-	// }
-	// .column span{
-	//     display: inline-block;
-	//     width: 25%;
-	//     text-align: center;
+	//     /*justify-content: center;*/
+	//     /*align-items: center;*/
+	//     min-height: 30px;
 	// }
 	//
+	// .column > div{
+	//     /*通过sass计算children.length的平均宽度?安装webpack2.0?hot-reloader?*/
+	//     width: 30%;
 	//
-	//
+	//     /*--------------------------------------------------------------*/
+	//     min-height: 30px;
+	// }
 	// </style>
 
 /***/ },
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n     <div class=\"column\">\r\n         <!--<span class=\"row\" v-for=\"col in {{colNums}}\"></span>-->\r\n         <span v-for=\"c in cnums\" :class=\"row\" >{{c}}</span>\r\n     </div>\r\n";
+	module.exports = "\r\n    <div class=\"column\">\r\n        <slot></slot>\r\n    </div>\r\n";
 
 /***/ },
 /* 14 */
@@ -9293,7 +9284,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "E:\\GlamUI\\src\\parent.vue"
+	  var id = "E:\\GlamUI\\src\\row.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -9317,8 +9308,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5405d7a0&file=parent.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./parent.vue", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5405d7a0&file=parent.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./parent.vue");
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-efbfca58&file=row.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./row.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-efbfca58&file=row.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./row.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -9348,21 +9339,16 @@
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	// <template>
-	//    <div>
-	//        I am parent
-	//        <slot></slot>
-	//    </div>
+	//     <div class="row">
+	//         <slot></slot>
+	//     </div>
 	// </template>
 	//
 	// <script>
-	exports.default = {
-	    mounted: function mounted() {
-	        this.$forceUpdate();
-	    }
-	};
+	exports.default = {};
 	// </script>
 	//
 	// <style>
@@ -9373,7 +9359,7 @@
 /* 18 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n   <div>\r\n       I am parent\r\n       <slot></slot>\r\n   </div>\r\n";
+	module.exports = "\r\n    <div class=\"row\">\r\n        <slot></slot>\r\n    </div>\r\n";
 
 /***/ },
 /* 19 */
@@ -9390,7 +9376,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "E:\\GlamUI\\src\\child.vue"
+	  var id = "E:\\GlamUI\\src\\mention.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -9414,8 +9400,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-051cd6d4&file=child.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./child.vue", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-051cd6d4&file=child.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./child.vue");
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-12ab1438&file=mention.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./mention.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-12ab1438&file=mention.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./mention.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -9433,7 +9419,7 @@
 
 
 	// module
-	exports.push([module.id, "\r\n.comment{\r\n    color: #ffffff;\r\n    border-radius: 5px;\r\n    background: #cccccc;\r\n    padding: 2px 4px 2px 4px;\r\n    position: relative;\r\n}\r\n\r\n.commentNum{\r\n    display: inline-block;\r\n    position: absolute;\r\n    background: red;\r\n    border-radius: 5px;\r\n    top: -2px;\r\n    right: -2px;\r\n    font-size: 10px;\r\n}\r\n\r\n", ""]);
+	exports.push([module.id, "\r\n    .mention{\r\n        color: #ffffff;\r\n        border-radius: 5px;\r\n        background: #cccccc;\r\n        padding: 2px 10px 2px 10px;\r\n        position: relative;\r\n    }\r\n\r\n    .mentionNumber{\r\n        display: inline-block;\r\n        position: absolute;\r\n        background: red;\r\n        border-radius: 5px;\r\n        top: -10px;\r\n        right: -14px;\r\n        font-size: 10px;\r\n        padding: 0 4px 0 4px;\r\n    }\r\n\r\n    .mentionAlert{\r\n        display: inline-block;\r\n        position: absolute;\r\n        background: red;\r\n        border-radius: 50%;\r\n        width: 8px;\r\n        height: 8px;\r\n        top: -4px;\r\n        right: -4px;\r\n    }\r\n", ""]);
 
 	// exports
 
@@ -9448,129 +9434,10 @@
 	    value: true
 	});
 	// <template>
-	//          <span class="comment">
-	//              <slot></slot>
-	//              <!--通过分发内容直接在html编写-->
-	//              <span :class="commentNum">+23</span>
-	//          </span>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	    props: {
-	        commentNum: {
-	            type: String,
-	            default: ''
-	        }
-	    }
-
-	};
-	// </script>
-	//
-	// <style>
-	// .comment{
-	//     color: #ffffff;
-	//     border-radius: 5px;
-	//     background: #cccccc;
-	//     padding: 2px 4px 2px 4px;
-	//     position: relative;
-	// }
-	//
-	// .commentNum{
-	//     display: inline-block;
-	//     position: absolute;
-	//     background: red;
-	//     border-radius: 5px;
-	//     top: -2px;
-	//     right: -2px;
-	//     font-size: 10px;
-	// }
-	//
-	// </style>
-
-/***/ },
-/* 23 */
-/***/ function(module, exports) {
-
-	module.exports = "\r\n         <span class=\"comment\">\r\n             <slot></slot>\r\n             <!--通过分发内容直接在html编写-->\r\n             <span :class=\"commentNum\">+23</span>\r\n         </span>\r\n";
-
-/***/ },
-/* 24 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__webpack_require__(25)
-	__vue_script__ = __webpack_require__(27)
-	__vue_template__ = __webpack_require__(28)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "E:\\GlamUI\\src\\mention.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 25 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(26);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(6)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-12ab1438&file=mention.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./mention.vue", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-12ab1438&file=mention.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./mention.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 26 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(5)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\r\n    .mention{\r\n        color: #ffffff;\r\n        border-radius: 5px;\r\n        background: #cccccc;\r\n        padding: 2px 10px 2px 10px;\r\n        position: relative;\r\n    }\r\n\r\n    .mentionNumber{\r\n        display: inline-block;\r\n        position: absolute;\r\n        background: red;\r\n        border-radius: 5px;\r\n        top: -10px;\r\n        right: -14px;\r\n        font-size: 10px;\r\n        padding: 0 4px 0 4px;\r\n    }\r\n\r\n    .mentionAlert{\r\n        display: inline-block;\r\n        position: absolute;\r\n        background: red;\r\n        border-radius: 50%;\r\n        width: 8px;\r\n        height: 8px;\r\n        top: -4px;\r\n        right: -4px;\r\n    }\r\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 27 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	// <template>
 	//          <span class="mention">
 	//              <slot></slot>
 	//              <!--通过分发内容直接在html编写-->
-	//              <span :class="mentionOpen" >{{mentionNum}}</span>
+	//              <span :class="mentionOpen">{{mentionNum}}</span>
 	//          </span>
 	// </template>
 	//
@@ -9638,10 +9505,300 @@
 	// </style>
 
 /***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n         <span class=\"mention\">\r\n             <slot></slot>\r\n             <!--通过分发内容直接在html编写-->\r\n             <span :class=\"mentionOpen\">{{mentionNum}}</span>\r\n         </span>\r\n";
+
+/***/ },
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(25)
+	__vue_script__ = __webpack_require__(27)
+	__vue_template__ = __webpack_require__(28)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "E:\\GlamUI\\src\\carousel.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(26);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(6)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5ff5f454&file=carousel.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./carousel.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5ff5f454&file=carousel.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./carousel.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(5)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\r\n#carousel{\r\n    position: relative;\r\n}\r\n\r\n.leftButton{\r\n    position: absolute;\r\n}\r\n\r\n.rightButton{\r\n    position: absolute;\r\n}\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 27 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div id="carousel">
+	//         <ul>
+	//             <div class="leftButton" @click="sildeToLeft">
+	//
+	//             </div>
+	//             <li><slot></slot></li>
+	//             <div class="rightButton" @click="sildeToRight">
+	//
+	//             </div>
+	//         </ul>
+	//     </div>
+	// </template>
+	//
+	// <script>
+
+	exports.default = {
+	    methods: {
+	        slideToLeft: function slideToLeft() {},
+	        slideToRight: function slideToRight() {}
+	    }
+	};
+	// </script>
+	//
+	// <style>
+	// #carousel{
+	//     position: relative;
+	// }
+	//
+	// .leftButton{
+	//     position: absolute;
+	// }
+	//
+	// .rightButton{
+	//     position: absolute;
+	// }
+	// </style>
+
+/***/ },
 /* 28 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n         <span class=\"mention\">\r\n             <slot></slot>\r\n             <!--通过分发内容直接在html编写-->\r\n             <span :class=\"mentionOpen\" >{{mentionNum}}</span>\r\n         </span>\r\n";
+	module.exports = "\r\n    <div id=\"carousel\">\r\n        <ul>\r\n            <div class=\"leftButton\" @click=\"sildeToLeft\">\r\n\r\n            </div>\r\n            <li><slot></slot></li>\r\n            <div class=\"rightButton\" @click=\"sildeToRight\">\r\n\r\n            </div>\r\n        </ul>\r\n    </div>\r\n";
+
+/***/ },
+/* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(30)
+	__vue_script__ = __webpack_require__(32)
+	__vue_template__ = __webpack_require__(33)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "E:\\GlamUI\\src\\popup.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 30 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(31);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(6)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-43386fb4&file=popup.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./popup.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-43386fb4&file=popup.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./popup.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 31 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(5)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\r\n.mask{\r\n    position: fixed;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: rgba(0,0,0,.3);\r\n    top: 0;\r\n    left: 0;\r\n    display: none;\r\n}\r\n\r\n.popupFrame{\r\n    width: 200px;\r\n    height: 100px;\r\n    background: #ffffff;\r\n    border-radius: 8px;\r\n    position: fixed;\r\n    left: 50%;\r\n    top: 50%;\r\n    -webkit-transform: translate3d(-50%,-50%,0);\r\n            transform: translate3d(-50%,-50%,0);\r\n    border:1px solid #cccccc;\r\n    display: none;\r\n}\r\n\r\n.popupContent{\r\n    text-align: center;\r\n    width: 100%;\r\n    height: 60px;\r\n    padding: 10px;\r\n}\r\n\r\n.statusBar{\r\n    position: absolute;\r\n    bottom: 0;\r\n    height: 30px;\r\n    width: 100%;\r\n    border-top: 1px solid #cccccc;\r\n}\r\n\r\n.statusBar span{\r\n    box-sizing: border-box;\r\n    float: left;\r\n    /*or display:inline-block*/\r\n    width: 50%;\r\n    text-align: center;\r\n    line-height: 30px;\r\n    color: #3FB1E2;\r\n    cursor: pointer;\r\n}\r\n\r\n.statusBar span:first-child{\r\n    border-right:1px solid #cccccc;\r\n}\r\n\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 32 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div class="popupBtn">
+	//         <span @click="framePopup">
+	//             <slot></slot>
+	//         </span>
+	//         <div class="mask"></div>
+	//         <div class="popupFrame">
+	//             <p class="popupContent">{{popup_content}}</p>
+	//             <div class="statusBar">
+	//                 <span class="certain" @click="closeFrame">确定</span>
+	//                 <span class="cancel" @click="closeFrame">取消</span>
+	//             </div>
+	//         </div>
+	//     </div>
+	// </template>
+	//
+	// <script>
+	var mask = document.getElementsByClassName('mask');
+	var frame = document.getElementsByClassName('popupFrame');
+
+	exports.default = {
+	    props: {
+	        popup_content: {
+	            type: String,
+	            default: ''
+	        }
+	    },
+	    methods: {
+	        framePopup: function framePopup() {
+	            mask[0].style.display = 'block';
+	            frame[0].style.display = 'block';
+	        },
+	        closeFrame: function closeFrame() {
+	            mask[0].style.display = 'none';
+	            frame[0].style.display = 'none';
+	        }
+	    }
+	};
+	// </script>
+	//
+	// <style>
+	// .mask{
+	//     position: fixed;
+	//     width: 100%;
+	//     height: 100%;
+	//     background: rgba(0,0,0,.3);
+	//     top: 0;
+	//     left: 0;
+	//     display: none;
+	// }
+	//
+	// .popupFrame{
+	//     width: 200px;
+	//     height: 100px;
+	//     background: #ffffff;
+	//     border-radius: 8px;
+	//     position: fixed;
+	//     left: 50%;
+	//     top: 50%;
+	//     transform: translate3d(-50%,-50%,0);
+	//     border:1px solid #cccccc;
+	//     display: none;
+	// }
+	//
+	// .popupContent{
+	//     text-align: center;
+	//     width: 100%;
+	//     height: 60px;
+	//     padding: 10px;
+	// }
+	//
+	// .statusBar{
+	//     position: absolute;
+	//     bottom: 0;
+	//     height: 30px;
+	//     width: 100%;
+	//     border-top: 1px solid #cccccc;
+	// }
+	//
+	// .statusBar span{
+	//     box-sizing: border-box;
+	//     float: left;
+	//     /*or display:inline-block*/
+	//     width: 50%;
+	//     text-align: center;
+	//     line-height: 30px;
+	//     color: #3FB1E2;
+	//     cursor: pointer;
+	// }
+	//
+	// .statusBar span:first-child{
+	//     border-right:1px solid #cccccc;
+	// }
+	//
+	// </style>
+
+/***/ },
+/* 33 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n    <div class=\"popupBtn\">\r\n        <span @click=\"framePopup\">\r\n            <slot></slot>\r\n        </span>\r\n        <div class=\"mask\"></div>\r\n        <div class=\"popupFrame\">\r\n            <p class=\"popupContent\">{{popup_content}}</p>\r\n            <div class=\"statusBar\">\r\n                <span class=\"certain\" @click=\"closeFrame\">确定</span>\r\n                <span class=\"cancel\" @click=\"closeFrame\">取消</span>\r\n            </div>\r\n        </div>\r\n    </div>\r\n";
 
 /***/ }
 /******/ ]);
