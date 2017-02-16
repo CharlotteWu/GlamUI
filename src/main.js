@@ -10,6 +10,7 @@ import row from './row.vue'
 import mention from './mention.vue'
 import carousel from './carousel.vue'
 import popup from './popup.vue'
+import loading from './loading.vue'
 
 
 new Vue({
@@ -20,6 +21,7 @@ new Vue({
         row,
         mention,
         carousel,
-        popup
+        popup,
+        loading
     }
 })

@@ -74,8 +74,17 @@
 
 	var _popup2 = _interopRequireDefault(_popup);
 
+	var _loading = __webpack_require__(34);
+
+	var _loading2 = _interopRequireDefault(_loading);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	// import parent from './parent.vue'
+	// import child from './child.vue'
+	/**
+	 * Created by charlotte on 17/2/2.
+	 */
 	new _vue2.default({
 	    el: '#app',
 	    components: {
@@ -84,14 +93,10 @@
 	        row: _row2.default,
 	        mention: _mention2.default,
 	        carousel: _carousel2.default,
-	        popup: _popup2.default
+	        popup: _popup2.default,
+	        loading: _loading2.default
 	    }
 	});
-	// import parent from './parent.vue'
-	// import child from './child.vue'
-	/**
-	 * Created by charlotte on 17/2/2.
-	 */
 
 /***/ },
 /* 1 */
@@ -9799,6 +9804,168 @@
 /***/ function(module, exports) {
 
 	module.exports = "\r\n    <div class=\"popupBtn\">\r\n        <span @click=\"framePopup\">\r\n            <slot></slot>\r\n        </span>\r\n        <div class=\"mask\"></div>\r\n        <div class=\"popupFrame\">\r\n            <p class=\"popupContent\">{{popup_content}}</p>\r\n            <div class=\"statusBar\">\r\n                <span class=\"certain\" @click=\"closeFrame\">确定</span>\r\n                <span class=\"cancel\" @click=\"closeFrame\">取消</span>\r\n            </div>\r\n        </div>\r\n    </div>\r\n";
+
+/***/ },
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(35)
+	__vue_script__ = __webpack_require__(37)
+	__vue_template__ = __webpack_require__(38)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "E:\\GlamUI\\src\\loading.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 35 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(36);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(6)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-35ff7f94&file=loading.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./loading.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js?id=_v-35ff7f94&file=loading.vue!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./loading.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 36 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(5)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\r\n.mask{\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: #000000;\r\n    opacity: .3;\r\n}\r\n\r\n\r\n.loadingCircleAnimation{\r\n\r\n}\r\n\r\n.fadeOut{\r\n    -webkit-animation:fadeOut 2s linear;\r\n    animation:fadeOut 2s linear;\r\n}\r\n\r\n@-webkit-keyframes fadeOut {\r\n    from{\r\n        opacity: 1;\r\n    }\r\n    to{\r\n        opacity: 0;\r\n    }\r\n}\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 37 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div class="">
+	//         <div class="loadingBtn">
+	//             <slot></slot>
+	//         </div>
+	//         <div class="mask"></div>
+	//         <div :class="loadingDuration" class="loadingCircleAnimation">
+	//             <div class="loadingCircleOutside"></div>
+	//             <div class="loadingCircleInside"></div>
+	//         </div>
+	//         <p>{{loading_content}}</p>
+	//     </div>
+	// </template>
+	//
+	// <script>
+	var timer = null;
+	var loading = document.getElementsByClassName('loadingCircleAnimation');
+	var mask = document.getElementsByClassName('mask');
+	exports.default = {
+	    props: {
+	        duration: {
+	            type: Number,
+	            default: 0
+	        },
+	        loading_content: {
+	            type: String,
+	            default: 'loading......'
+	        }
+	    },
+	    computed: {
+	        //什么情况下需要持续时间
+	        loadingDuration: function loadingDuration() {
+	            if (this.duration != 0) {
+	                timer = setTimeout(function () {
+	                    loading[0].className = 'fadeOut';
+	                }, this.duration * 1000);
+	            }
+	        }
+	    }
+	};
+	// </script>
+	//
+	// <style>
+	// .mask{
+	//     position: fixed;
+	//     top: 0;
+	//     left: 0;
+	//     width: 100%;
+	//     height: 100%;
+	//     background: #000000;
+	//     opacity: .3;
+	// }
+	//
+	//
+	// .loadingCircleAnimation{
+	//
+	// }
+	//
+	// .fadeOut{
+	//     -webkit-animation:fadeOut 2s linear;
+	//     -o-animation:fadeOut 2s linear;
+	//     -moz-animation: fadeOut 2s linear;
+	//     animation:fadeOut 2s linear;
+	// }
+	//
+	// @-webkit-keyframes fadeOut {
+	//     from{
+	//         opacity: 1;
+	//     }
+	//     to{
+	//         opacity: 0;
+	//     }
+	// }
+	//
+	// @-moz-keyframes fadeOut {
+	//     from{
+	//         opacity: 1;
+	//     }
+	//     to{
+	//         opacity: 0;
+	//     }
+	// }
+	// </style>
+
+/***/ },
+/* 38 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n    <div class=\"\">\r\n        <div class=\"loadingBtn\">\r\n            <slot></slot>\r\n        </div>\r\n        <div class=\"mask\"></div>\r\n        <div :class=\"loadingDuration\" class=\"loadingCircleAnimation\">\r\n            <div class=\"loadingCircleOutside\"></div>\r\n            <div class=\"loadingCircleInside\"></div>\r\n        </div>\r\n        <p>{{loading_content}}</p>\r\n    </div>\r\n";
 
 /***/ }
 /******/ ]);
